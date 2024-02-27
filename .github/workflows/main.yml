@@ -16,7 +16,9 @@ jobs:
       - name: Login to AWS ECR
         uses: aws-actions/amazon-ecr-login@v1
         with:
-          registry: 767398029247.dkr.ecr.us-east-1.amazonaws.com
+          aws-access-key-id: AKIA3FLD4U67R6BVCFNE
+          aws-secret-access-key: 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
+          aws-region: us-east-1
 
       - name: Build and Push Docker Images
         run: |
