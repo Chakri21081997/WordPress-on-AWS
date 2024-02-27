@@ -1,0 +1,30 @@
+name: Deploy to AWS ECS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login to AWS ECR
+        uses: aws-actions/amazon-ecr-login@v1
+        with:
+          registry: <your-aws-account-id>.dkr.ecr.<your-region>.amazonaws.com
+
+      - name: Build and Push Docker Images
+        run: |
+          docker-compose build
+          docker-compose push
+
+      - name: Deploy to ECS (Staging)
+        run: aws ecs update-service --cluster <staging-cluster-name> --service <staging-service-name> --force-new-deployment
+
+      - name: Deploy to ECS (Production)
+        run: aws ecs update-service --cluster <production-cluster-name> --service <production-service-name> --force-new-deployment
