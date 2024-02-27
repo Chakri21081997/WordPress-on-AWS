@@ -26,7 +26,7 @@ jobs:
           docker-compose push
 
       - name: Deploy to ECS (Staging)
-        run: aws ecs update-service --cluster staging--service staging --force-new-deployment --region us-east-1
+        run: aws ecs update-service --cluster staging --service staging --force-new-deployment --region us-east-1
 
       - name: Deploy to ECS (Production)
         run: aws ecs update-service --cluster production --service production --force-new-deployment --region us-east-1
