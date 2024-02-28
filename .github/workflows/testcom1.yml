@@ -23,5 +23,5 @@ jobs:
 
     - name: Build and Push Docker Compose Services
       run: |
-        docker-compose -f compose/docker-compose.yaml . build
-        docker-compose -f compose/docker-compose.yaml . push
+        docker-compose build -f compose/docker-compose.yaml . 
+        docker-compose push -f compose/docker-compose.yaml . 
