@@ -26,5 +26,4 @@ jobs:
       - name: Push Docker Images to ECR
         run: docker-compose push
 
-      - name: Deploy to ECS (Staging)
-        run: aws ecs update-service --cluster staging --service test --force-new-deployment --region us-east-1
+#
