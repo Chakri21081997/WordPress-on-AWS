@@ -13,12 +13,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Login to AWS ECR
+      - name: configure-aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: AKIA3FLD4U67R6BVCFNE
           aws-secret-access-key: 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
           aws-region: us-east-1
+
+      - name: Login to AWS ECR
+        id: login-ECR
+        uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build Docker Images
         run: docker-compose build
