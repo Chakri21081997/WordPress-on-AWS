@@ -24,16 +24,16 @@ jobs:
         run: docker build -t mysql-image:latest -f path/to/MySQL/Dockerfile .
 
       - name: Tag MySQL Image
-        run: docker tag mysql-image:latest 767398029247.dkr.ecr.us-east-1.amazonaws.com/mysql-image:latest
+        run: docker tag mysql-image:latest 767398029247.dkr.ecr.us-east-1.amazonaws.com/test/mysql-image:latest
 
       - name: Push MySQL Image to ECR
-        run: docker push 767398029247.dkr.ecr.us-east-1.amazonaws.com/mysql-image:latest
+        run: docker push 767398029247.dkr.ecr.us-east-1.amazonaws.com/test/mysql-image:latest
 
       - name: Build WordPress Image
         run: docker build -t wordpress-image:latest -f path/to/WordPress/Dockerfile .
 
       - name: Tag WordPress Image
-        run: docker tag wordpress-image:latest 767398029247.dkr.ecr.us-east-1.amazonaws.com/wordpress-image:latest
+        run: docker tag wordpress-image:latest 767398029247.dkr.ecr.us-east-1.amazonaws.com/test/wordpress-image:latest
 
       - name: Push WordPress Image to ECR
-        run: docker push 767398029247.dkr.ecr.us-east-1.amazonaws.com/wordpress-image:latest
+        run: docker push 767398029247.dkr.ecr.us-east-1.amazonaws.com/test/wordpress-image:latest
