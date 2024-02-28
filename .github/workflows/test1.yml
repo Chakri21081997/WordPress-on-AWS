@@ -23,10 +23,10 @@ jobs:
 
     - name: Build and Push WordPress Docker image
       run: |
-        docker build -t public.ecr.aws/y5i3n5q3/wordpress:latest -f word.dockerfile .
-        docker push public.ecr.aws/y5i3n5q3/wordpress:latest
+        docker build -t public.ecr.aws/y5i3n5q3/test/wordpress:latest -f word.dockerfile .
+        docker push public.ecr.aws/y5i3n5q3/test/wordpress:latest
 
     - name: Build and Push MySQL Docker image
       run: |
-        docker build -t public.ecr.aws/y5i3n5q3/mysql:latest -f db.dockerfile .
-        docker push public.ecr.aws/y5i3n5q3/mysql:latest
+        docker build -t public.ecr.aws/y5i3n5q3/test/mysql:latest -f db.dockerfile .
+        docker push public.ecr.aws/y5i3n5q3/test/mysql:latest
