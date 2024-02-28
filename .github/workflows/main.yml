@@ -20,11 +20,11 @@ jobs:
           aws-secret-access-key: dDtHr2BZful5TwHAJo5xDZtUcIzs6UChaSfEq+oR
           aws-region: us-east-1
 
-      - name: Build and Push Docker Images
-        run: |
-          docker-compose build
-          docker-compose push
+      - name: Build Docker Images
+        run: docker-compose build
+
+      - name: Push Docker Images to ECR
+        run: docker-compose push
 
       - name: Deploy to ECS (Staging)
-        run: |
-          aws ecs update-service --cluster staging --service test --force-new-deployment --region us-east-1
+        run: aws ecs update-service --cluster staging --service test --force-new-deployment --region us-east-1
