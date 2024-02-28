@@ -37,3 +37,6 @@ jobs:
 
       - name: Push WordPress Image to ECR
         run: docker push 767398029247.dkr.ecr.us-east-1.amazonaws.com/test/wordpress-image:latest
+      
+      - name: aws cli
+        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 767398029247.dkr.ecr.us-east-1.amazonaws.com
