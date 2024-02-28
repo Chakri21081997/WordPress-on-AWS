@@ -3,7 +3,7 @@ name: Build and Push Docker Compose Images
 on:
   push:
     branches:
-      - master  
+      - testcompose  
 
 jobs:
   build-and-push:
@@ -23,5 +23,5 @@ jobs:
 
     - name: Build and Push Docker Compose Services
       run: |
-        docker-compose -f docker-compose.yaml . build
-        docker-compose -f docker-compose.yaml . push
+        docker-compose -f compose/docker-compose.yaml . build
+        docker-compose -f compose/docker-compose.yaml . push
