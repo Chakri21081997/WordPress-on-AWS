@@ -19,8 +19,9 @@ jobs:
         aws configure set aws_access_key_id AKIA3FLD4U67R6BVCFNE
         aws configure set aws_secret_access_key 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
         aws configure set default.region us-east-1
+        echo '{"credsStore": "ecr-login"}' > /home/runner/.docker/config.json
         aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y5i3n5q3
 
     - name: Build and Push Docker Compose Services
       run: |
-        docker-compose up -d -f compose/docker-compose.yaml . 
+        docker-compose up -d -f compose/docker-compose.yaml
