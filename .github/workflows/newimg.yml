@@ -23,5 +23,5 @@ jobs:
 
     - name: Build and Push WordPress Docker image
       run: |
-        docker build -t public.ecr.aws/y5i3n5q3/test:word:test -f newword.dockerfile .
-        docker push public.ecr.aws/y5i3n5q3/test:word:test
+        docker build -t public.ecr.aws/y5i3n5q3/test:word-test -f newword.dockerfile .
+        docker push public.ecr.aws/y5i3n5q3/test:word-test
