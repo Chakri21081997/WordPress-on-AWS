@@ -16,8 +16,8 @@ jobs:
     - name: Login to AWS ECR
       id: login-ecr
       run: |
-        aws configure set aws_access_key_id AKIA3FLD4U67R6BVCFNE
-        aws configure set aws_secret_access_key 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
+        echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
         aws configure set default.region us-east-1
         echo '{"credsStore": "ecr-login"}' > /home/runner/.docker/config.json
         aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y5i3n5q3
