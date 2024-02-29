@@ -2,7 +2,7 @@
 FROM wordpress:latest
 
 # Set environment variables
-ENV WORDPRESS_DB_HOST=db:3306
+ENV WORDPRESS_DB_HOST=local
 ENV WORDPRESS_DB_USER=wordpress
 ENV WORDPRESS_DB_PASSWORD=wordpress
 ENV WORDPRESS_DB_NAME=wordpress
