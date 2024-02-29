@@ -8,7 +8,7 @@ WORKDIR /var/www/html
 RUN rm -rf wp-content
 
 # Copy the custom wp-config.php file to the container
-COPY wp-config.php /var/www/html
+# COPY wp-config.php /var/www/html
 
 # Expose port 80 for web traffic
 EXPOSE 80
