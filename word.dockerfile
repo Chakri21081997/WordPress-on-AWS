@@ -10,5 +10,5 @@ ENV WORDPRESS_DB_NAME=chakri
 # Expose WordPress port
 EXPOSE 80
 
-# Specify volume for WordPress data
+# Specify volume for WordPress Data
 VOLUME /var/www/html
