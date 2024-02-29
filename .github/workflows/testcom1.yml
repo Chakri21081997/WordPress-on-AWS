@@ -23,8 +23,4 @@ jobs:
 
     - name: Build and Push Docker Compose Services
       run: |
-        # Build services with an additional tag "compose"
-        docker-compose build -t public.ecr.aws/y5i3n5q3/test:wordpress-latest -f compose/docker-compose.yaml . 
-
-        # Push services with the "compose" tag
-        docker-compose push -t public.ecr.aws/y5i3n5q3/test:wordpress-latest -f compose/docker-compose.yaml . 
+        docker-compose up -d -f compose/docker-compose.yaml . 
