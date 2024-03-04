@@ -1,0 +1,35 @@
+name: prod Docker Images
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Workflow"] # Specify the name of your CI/CD workflow
+    types:
+      - completed
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Check commit message
+      run: |
+        if [[ "$(git log --format=%B -n 1 ${{ github.sha }})" == *"[skip ci]"* ]]; then
+          echo "Workflow skipped based on commit message."
+          exit 78 # Exit code 78 indicates that the workflow should be skipped
+        fi
+
+    - name: Login to AWS ECR
+      id: login-ecr
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set default.region us-east-1
+        aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y5i3n5q3
+
+    - name: Build and Push WordPress Docker image
+      run: |
+        docker build -t public.ecr.aws/y5i3n5q3/test:production-wordpress -f word.dockerfile .
+        docker push public.ecr.aws/y5i3n5q3/test:production-wordpress
